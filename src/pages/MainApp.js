@@ -10,6 +10,7 @@ const MainApp = () => {
 
   return (
     <div>
+      <h1>test ini dong </h1>
       <input 
         type="text" 
         value={input}
