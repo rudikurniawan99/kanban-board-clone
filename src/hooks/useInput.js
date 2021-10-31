@@ -1,15 +1,15 @@
 import React from 'react'
 
 const useInput = (initValue) => {
-  const [input, setInput] = React.useState(initValue)
+  const [value, setValue] = React.useState(initValue)
   const onChange = (e) => {
-    setInput(e.target.value)
+    setValue(e.target.value)
   } 
   const reset = () => {
-    setInput(initValue)
+    setValue(initValue)
   }
 
-  return { input, onchange, reset }
+  return { value, onChange, reset }
 }
 
 export default useInput

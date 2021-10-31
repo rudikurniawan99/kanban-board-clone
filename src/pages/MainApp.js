@@ -1,34 +1,21 @@
 import React from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import { addList } from '../features/list/listSlice'
+import { useSelector } from 'react-redux'
+import List from '../components/List'
+import ListInputField from '../components/ListInputField'
 
 const MainApp = () => {
 
   const list = useSelector(state => state.list)
-  const dispatch = useDispatch()
-  const [input, setInput] = React.useState('')
 
   return (
-    <div>
-      <h1>test ini dong </h1>
-      <input 
-        type="text" 
-        value={input}
-        onChange={(e) => {
-          setInput(e.target.value)
-        }}
-      /> 
-      <button
-        onClick={() => {
-          dispatch(addList({title: input}))
-          setInput('')
-        }} 
-      >+</button>
-      <div>
-        {list.map((item) => {
-          console.log(item.title)
-        })}
+    <div className="p-20 container mx-auto">
+      <ListInputField/>
+      <div className="py-8 space-x-5 flex">
+        {list.map((item) => (
+          <List key={item.id} list={item} />
+        ))}
       </div>
+      
     </div>
   )
 }
