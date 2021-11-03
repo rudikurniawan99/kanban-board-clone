@@ -34,7 +34,7 @@ export const listSlice = createSlice({
     },
     deleteCard: (state, action) => {
       const { cardId, listId } = action.payload
-      let updatedList, listIndex, cardIndex = null
+      let updatedList, updatedCard, listIndex, cardIndex = null
 
       state.map((item, index) => {
         if(item.id === listId){
@@ -43,8 +43,8 @@ export const listSlice = createSlice({
               cardIndex = index
             }
           })
+          item.cards = [...item.cards.slice(0, cardIndex), ...item.cards.slice(cardIndex+1)]
         }
-        item.cards = [...item.cards.slice(0, cardIndex), ...item.cards.slice(cardIndex+1)]
       }) 
     }
   }
