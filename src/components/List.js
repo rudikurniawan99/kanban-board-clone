@@ -18,7 +18,10 @@ const List = ({list}) => {
       <hr />
       <div className="my-4">
         {list.cards && (
-          <Card card={list.cards} />
+          <Card 
+            card={list.cards}
+            listId={list.id}
+          />
         )}
       </div>
       <div className="my-4">

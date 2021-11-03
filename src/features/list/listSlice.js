@@ -31,9 +31,24 @@ export const listSlice = createSlice({
         }
       })
       state = [...state.slice(0, itemIndex), updateItem, ...state.slice(itemIndex+1)]
+    },
+    deleteCard: (state, action) => {
+      const { cardId, listId } = action.payload
+      let updatedList, listIndex, cardIndex = null
+
+      state.map((item, index) => {
+        if(item.id === listId){
+          item.cards.map((card, index)=> {
+            if(card.id === cardId){
+              cardIndex = index
+            }
+          })
+        }
+        item.cards = [...item.cards.slice(0, cardIndex), ...item.cards.slice(cardIndex+1)]
+      }) 
     }
   }
 })
 
-export const { addList, addCard } = listSlice.actions
+export const { addList, addCard, deleteCard } = listSlice.actions
 export default listSlice.reducer
