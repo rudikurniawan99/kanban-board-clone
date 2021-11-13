@@ -8,8 +8,10 @@ const useInput = (initValue) => {
   const reset = () => {
     setValue(initValue)
   }
+  
 
   return { value, onChange, reset }
+
 }
 
 export default useInput
