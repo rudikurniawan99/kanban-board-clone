@@ -5,7 +5,9 @@ import MainApp from './pages/MainApp'
 
 const App = () => {
   return (
-    <Provider store={store}>
+    <Provider
+      store={store} 
+    >
       <MainApp/>
     </Provider>
   )
