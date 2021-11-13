@@ -2,7 +2,7 @@ import useInput from '../hooks/useInput'
 import InputField from './InputField'
 import { useState } from 'react'
 
-const List = () => {
+const List = ({item}) => {
 
   const [isOpen, setIsOpen] = useState(false)
   const cardTitle = useInput('')
@@ -10,7 +10,7 @@ const List = () => {
   return (
     <div className="w-80 p-3 rounded-md border border-gray-800 border-opacity-25">
       <h3 className="text-gray-800 font-semibold">
-        Title
+        {item.title}
       </h3>
       <hr />
       <div className="my-3 py-2">
