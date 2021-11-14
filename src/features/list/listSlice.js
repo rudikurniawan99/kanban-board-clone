@@ -3,7 +3,22 @@ import { v4 } from "uuid";
 
 export const listSlice = createSlice({
   name: 'list',
-  initialState: [],
+  initialState: [
+    {
+      id: v4(),
+      title: 'Dummy List',
+      cards: [
+        {
+          id: v4(),
+          title: 'Dummy Card 1'
+        },
+        {
+          id: v4(),
+          title: 'Dummy Card 2'
+        }
+      ]
+    }
+  ],
   reducers: {
     addList: (state, action) => {
       const { title } = action.payload
@@ -12,11 +27,23 @@ export const listSlice = createSlice({
         title,
         cards: []
       }
-
       state.push(newList)
+    },
+    addCard: (state, action) => {
+      const { listId, title } = action.payload
+      const newCard = {
+        id: v4(),
+        title
+      }
+
+      state.map((list) => {
+        if(list.id === listId){
+          list.cards.push(newCard)
+        }
+      })
     }
   }
 })
 
-export const { addList } = listSlice.actions
+export const { addList, addCard } = listSlice.actions
 export default listSlice.reducer

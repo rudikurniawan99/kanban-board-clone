@@ -28,7 +28,7 @@ const MainApp = () => {
           }} 
         >+</button>
       </div>
-      <div className="mt-10 flex space-x-5">
+      <div className="flex space-x-5 mt-10">
         {lists.map((list, index) => (
           <List
             key={index}
