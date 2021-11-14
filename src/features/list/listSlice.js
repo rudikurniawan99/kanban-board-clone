@@ -41,7 +41,7 @@ export const listSlice = createSlice({
           list.cards.push(newCard)
         }
       })
-    }
+    },
   }
 })
 
