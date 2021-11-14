@@ -4,6 +4,7 @@ import List from '../components/List'
 import useInput from '../hooks/useInput'
 import { useSelector, useDispatch } from 'react-redux'
 import { addList } from '../features/list/listSlice'
+import { Droppable } from 'react-beautiful-dnd'
 
 const MainApp = () => {
 
@@ -30,10 +31,26 @@ const MainApp = () => {
       </div>
       <div className="flex space-x-5 mt-10">
         {lists.map((list, index) => (
-          <List
+          <Droppable
+            droppableId={list.id}
             key={index}
-            item={list} 
-          />
+          >
+            {(provided) => (
+              <div
+                className="h-full"
+                ref={provided.innerRef} 
+                {...provided.droppableProps}
+              >
+                <List
+                  item={list}
+                  provided={provided}
+                />
+                {provided.placeholder}
+              </div>
+            )}
+            
+          </Droppable>
+          
         ))}
       </div>
     </div>    

@@ -40,6 +40,7 @@ export const listSlice = createSlice({
         if(list.id === listId){
           list.cards.push(newCard)
         }
+        return 0
       })
     },
   }
